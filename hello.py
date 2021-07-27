@@ -1,5 +1,8 @@
 from flask import Flask
-import gunicorn
+from waitress import serve
+
+if __name__ == "__main__":
+    serve(app, host='0.0.0.0', port=5000)
 
 app = Flask(__name__)
 
@@ -7,5 +10,8 @@ app = Flask(__name__)
     def hello():
         return "Hello World!"
 
+# if __name__ == "__main__":
+#     app.run()
+
 if __name__ == "__main__":
-    app.run()
+    serve(app, host='0.0.0.0', port=5000)
