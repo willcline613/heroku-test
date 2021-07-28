@@ -1,14 +1,12 @@
 from flask import Flask
-from waitress import serve
+from flask import render_template
+import gunicorn
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET','POST'])
+@app.route("/")
 def hello():
-    return "Hello World!"
-
-# if __name__ == "__main__":
-#     app.run()
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    serve(app, host='0.0.0.0', port=5000)
+    app.run()
